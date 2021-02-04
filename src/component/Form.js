@@ -1,5 +1,3 @@
-import StepTwo from "./StepTwo";
-
 const Form = ({
   username,
   setUsername,
@@ -9,16 +7,15 @@ const Form = ({
   setPass1,
   pass2,
   setPass2,
+  testPass,
+  setTestPass,
 }) => {
-  const testPass = () => {
-    if (pass1 === pass2) {
-      <StepTwo />;
-    } else {
-      alert("non");
-    }
+  const verifPass = () => {
+    pass1 === pass2 ? setTestPass(true) : setTestPass(false);
+    pass1 !== pass2 && alert("mot de passe non identiques !");
   };
   return (
-    <div className="Form">
+    <div className="Form" style={{ display: testPass ? "none" : "block" }}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -26,7 +23,7 @@ const Form = ({
       >
         <input
           type="text"
-          placeholder="username"
+          placeholder={username}
           name="username"
           value={username}
           onChange={(event) => {
@@ -61,7 +58,7 @@ const Form = ({
           }}
         />
         <div className="submit">
-          <input type="submit" value="Submit" onClick={testPass} />
+          <input type="submit" value="Submit" onClick={verifPass} />
         </div>
       </form>
     </div>
