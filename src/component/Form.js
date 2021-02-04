@@ -10,23 +10,28 @@ const Form = ({
   testPass,
   setTestPass,
 }) => {
+  // au  click sur le btn du form = test si les mdp sont indentiques , si true = testPass passe à true, ainsi le formulaire disparait et la page de récap apparait
+  // si mdp pas identique = alert
   const verifPass = () => {
     pass1 === pass2 ? setTestPass(true) : setTestPass(false);
     pass1 !== pass2 && alert("mot de passe non identiques !");
   };
   return (
+    // si le test du mdp est true, je fais disparaitre mon formulaire (et ça fait apparaitre RecapInfo)
     <div className="Form" style={{ display: testPass ? "none" : "block" }}>
       <form
+        // au click du submit, annulation de l'envoie par défaut vers une autre page
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
         <input
           type="text"
-          placeholder={username}
+          placeholder="username"
           name="username"
           value={username}
           onChange={(event) => {
+            // Récupère valeur de l'input
             setUsername(event.target.value);
           }}
         />

@@ -1,5 +1,3 @@
-// import Form from "./Form";
-
 const StepTwo = ({ username, email, pass1, pass2, testPass, setTestPass }) => {
   return (
     <>
